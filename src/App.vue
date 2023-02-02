@@ -2,7 +2,7 @@
   <div id="app">
     <FormBudget @submitForm = 'onFormSubmit' />
     <TotalBalance :total = 'totalBalance'/>
-    <BudgetList :list = 'list' @deleteItem = 'onDeleteItem'/>
+    <BudgetList :list = 'list' @onDeleleteThisItem = 'onDeleteItem'/>
 
   </div>
 </template>
