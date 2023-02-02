@@ -3,8 +3,9 @@
     <div class="list-item" v-for="(item, prop) in list" :key="prop">
       <span class="budget-comment"> {{ item.comment }} </span>
       <span class="budget-value"> {{ item.value }} </span>
-      <el-button type="danger" size="mini" @click ="deleteThisItem(item.id)"
-        >Delete </el-button>
+      <el-button type="danger" size="mini" @click="deleteThisItem(item.id)"
+        >Delete
+      </el-button>
     </div>
   </div>
 </template>
@@ -38,5 +39,4 @@ export default {
   margin-left: auto;
   margin-right: 20px;
 }
-
 </style>
