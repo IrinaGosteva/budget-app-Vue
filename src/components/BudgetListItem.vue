@@ -1,7 +1,9 @@
 <template>
   <div>
     <div class="list-item" v-for="(item, prop) in list" :key="prop">
-      <span class="budget-comment"> {{ item.comment }} </span>
+      <span class="budget-comment" :class="[classIconArrow[item.type]]">
+        {{ item.comment }}
+      </span>
       <span class="budget-value"> {{ item.value }} </span>
 
       <el-button type="danger" size="mini" @click="centerDialogVisible = true"
@@ -32,6 +34,10 @@ export default {
   name: "BudgetListItem",
   data: () => ({
     centerDialogVisible: false,
+    classIconArrow: {
+      INCOME: "el-icon-top",
+      OUTCOME: "el-icon-bottom",
+    },
   }),
   props: {
     list: {
