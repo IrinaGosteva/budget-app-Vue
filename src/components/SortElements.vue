@@ -2,12 +2,12 @@
   <div class="sortItem">
     <el-button
       class="el-button el-button--success is-plain el-icon-top"
-      @click="sortList('OUTCOME')"
+      @click="sortList('INCOME')"
     >
     </el-button>
     <el-button
       class="el-button el-button--danger is-plain el-icon-bottom"
-      @click="sortList('INCOME')"
+      @click="sortList('OUTCOME')"
     >
     </el-button>
     <el-button class="el-button el-button--plain is-plain" @click="sortList()"
