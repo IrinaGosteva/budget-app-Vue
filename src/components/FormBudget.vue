@@ -28,13 +28,14 @@
 </template>
 
 <script>
+
 export default {
   name: "FormBudget",
   data: () => ({
     formData: {
       type: "INCOME",
       comment: "",
-      value: 0,
+      value: '',
     },
     rules: {
       type: [
@@ -45,13 +46,16 @@ export default {
       ],
       value: [
         { required: true, message: "please entet amount", trigger: "blur" },
-        { type: "number", message: "value must be a number", trigger: "blur" },
+        { type: "number", message:"value must be a number", trigger: "blur" },
       ],
     },
   }),
   methods: {
     onSubmit() {
       this.$refs.addItemForm.validate((valid) => {
+        if( this.formData.value===0){
+          valid = false;
+        }
         if (valid) {
           this.$emit("submitForm", { ...this.formData });
           this.$refs.addItemForm.resetFields();

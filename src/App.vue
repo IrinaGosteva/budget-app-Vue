@@ -23,14 +23,26 @@ export default {
       1: {
         type: "INCOME",
         value: 180,
-        comment: "some comment",
+        comment: "1 some comment",
         id: 1,
       },
       2: {
         type: "OUTCOME",
         value: -50,
-        comment: "some outcome comment",
+        comment: "2 some outcome comment",
         id: 2,
+      },
+      3: {
+        type: "INCOME",
+        value: 40,
+        comment: "3 some comment",
+        id: 3,
+      },
+      4: {
+        type: "OUTCOME",
+        value: -150,
+        comment: "4 some outcome comment",
+        id: 4,
       },
     },
   }),
@@ -56,6 +68,11 @@ export default {
       };
 
       this.$set(this.list, newObj.id, newObj);
+    },
+  },
+  watch: {
+    list() {
+      return this.list;
     },
   },
 };
