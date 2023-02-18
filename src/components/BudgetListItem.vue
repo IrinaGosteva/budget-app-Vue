@@ -64,7 +64,7 @@ export default {
   props: {
     list: {
       type: Object,
-      defoult: () => ({}),
+      default: () => ({}),
     },
   },
   methods: {
