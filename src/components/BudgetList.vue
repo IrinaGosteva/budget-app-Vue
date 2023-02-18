@@ -2,8 +2,7 @@
   <div class="budgetListWrap">
     <el-card :header="header">
       <template v-if="!isEmpty">
-        <BudgetListItem :list = 'list' @deleteThisItem ="onDeleleteThisItem"/>
-
+        <BudgetListItem :list="list" @deleteThisItem="onDeleleteThisItem" />
       </template>
       <el-alert v-else type="success" :title="emptyTitle" :closable="false" />
     </el-card>
@@ -46,5 +45,4 @@ export default {
   max-width: 500px;
   margin: auto;
 }
-
 </style>

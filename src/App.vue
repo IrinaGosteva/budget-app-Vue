@@ -1,59 +1,80 @@
 <template>
   <div id="app">
-    <FormBudget @submitForm = 'onFormSubmit' />
-    <TotalBalance :total = 'totalBalance'/>
-    <BudgetList :list = 'list' @onDeleleteThisItem = 'onDeleteItem'/>
-
+    <FormBudget @submitForm="onFormSubmit" />
+    <TotalBalance :total="totalBalance" />
+    <BudgetList :list="list" @onDeleleteThisItem="onDeleteItem" />
   </div>
 </template>
 
 <script>
-
-import BudgetList from '@/components/BudgetList';
-import TotalBalance from '@/components/TotalBalance';
-import FormBudget from '@/components/FormBudget';
+import BudgetList from "@/components/BudgetList";
+import TotalBalance from "@/components/TotalBalance";
+import FormBudget from "@/components/FormBudget";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
     BudgetList,
     TotalBalance,
-    FormBudget
+    FormBudget,
   },
   data: () => ({
     list: {
       1: {
-        type: 'Income',
+        type: "INCOME",
         value: 180,
-        comment: 'some comment',
-        id: 1
+        comment: "1 some comment",
+        id: 1,
       },
       2: {
-        type: 'Outcome',
+        type: "OUTCOME",
         value: -50,
-        comment: 'some outcome comment',
-        id: 2
+        comment: "2 some outcome comment",
+        id: 2,
       },
-    }
+      3: {
+        type: "INCOME",
+        value: 40,
+        comment: "3 some comment",
+        id: 3,
+      },
+      4: {
+        type: "OUTCOME",
+        value: -150,
+        comment: "4 some outcome comment",
+        id: 4,
+      },
+    },
   }),
   computed: {
     totalBalance() {
-      return Object.values(this.list).reduce((acc, item) => acc + item.value, 0);
-    }
+      return Object.values(this.list).reduce((acc, item) => {
+        acc +=
+          item.type === "INCOME"
+            ? (item.value = Math.abs(item.value))
+            : (item.value = -Math.abs(item.value));
+        return acc;
+      }, 0);
+    },
   },
   methods: {
     onDeleteItem(id) {
-      this.$delete(this.list, id)
+      this.$delete(this.list, id);
     },
     onFormSubmit(data) {
       const newObj = {
         ...data,
-        id: String(Math.random())
+        id: String(Math.random()),
       };
 
       this.$set(this.list, newObj.id, newObj);
-    }
-  }
+    },
+  },
+  watch: {
+    list() {
+      return this.list;
+    },
+  },
 };
 </script>
 
